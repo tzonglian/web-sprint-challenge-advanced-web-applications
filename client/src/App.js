@@ -1,20 +1,19 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 
 import Login from "./components/Login";
+import PrivateRoute from "./utils/PrivateRoute";
+import BubblePage from "./components/BubblePage";
 import "./styles.scss";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Switch>
+        <PrivateRoute path="/bubblepage" component={BubblePage} />
         <Route exact path="/" component={Login} />
-        {/* 
-          Build a PrivateRoute component that will 
-          display BubblePage when you're authenticated 
-        */}
-      </div>
-    </Router>
+      </Switch>
+    </div>
   );
 }
 
